@@ -50,7 +50,7 @@ if (isset($_GET["add"]))
 
 			<ul>
 			  <li><a href="../homePage313.html">Home</a></li>
-			  <li><a href="../index.html">Assignments</a></li>
+			  <li><a href="../web">Assignments</a></li>
 			  <li><a id="current-page" href="">Current Week03 - Store</a></li>
 			</ul>
 		</div>

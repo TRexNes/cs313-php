@@ -25,11 +25,11 @@ body {
 
 /* Change the link color to #111 (black) on hover */
 #header li a:hover {
-    background-color: darkgreen;
+    background-color: grey;
 }
 
 #current-page {
-    background: grey;
+    background: darkgrey;
 }
 
 #about-button:hover {

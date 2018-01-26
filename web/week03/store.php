@@ -5,7 +5,7 @@ if (isset($_GET["new"]))
 	session_destroy();
 	header( 'Location: store.php' );
 }
-$products = array("benchmade" => 19.99, "buck" => 10.99, "spyderco" => 2.99);
+$products = array("Drag1" => 19.99, "Drag2" => 10.99, "Drag3" => 12.99);
 //Add
 if (isset($_GET["add"]))
 {
@@ -28,7 +28,7 @@ if (isset($_GET["add"]))
 <html>
 	<body>
 		
-			<h1>Rex Nesbit's Shop</h1>
+			<h1>The Dragon Shop</h1>
 <div id="header">
 	
 	<ul>
@@ -59,7 +59,7 @@ if (isset($_GET["add"]))
 		<?php
 			foreach ($products as $key => $price) {
 				echo "<div id='cart-item'>";                   
-				echo	"<span class='item-thumb'>";
+				echo	"<span id='item-thumb'>";
 				echo		"<img src='../img/".$key.".jpg'>";
 				echo	"</span>";
 				echo	"<div id='item-detail'>";

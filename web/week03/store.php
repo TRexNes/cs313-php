@@ -49,9 +49,9 @@ if (isset($_GET["add"]))
 			</div>
 
 			<ul>
-			  <li><a href="../index.html">Home</a></li>
-			  <li><a href="../assignments.html">Assignments</a></li>
-			  <li><a id="current-page" href="">Current Week - Store</a></li>
+			  <li><a href="../homePage313.html">Home</a></li>
+			  <li><a href="../index.html">Assignments</a></li>
+			  <li><a id="current-page" href="">Current Week03 - Store</a></li>
 			</ul>
 		</div>
 

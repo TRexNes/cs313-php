@@ -11,8 +11,8 @@
 }
 
 .cart-add {
-	background: orange;
-	border: 2px solid orange;
+	background: silver;
+	border: 2px solid darkgreen;
     border-radius: 5px;
 	float: right;
 	padding-right: 3px;
@@ -21,11 +21,12 @@
 
 #cart {
 	font-size: 20px;
-	position: absolute;
+	position: relative;
 	top: 20px;
-    right: 0;
+    left: 1000px;
     width: 200px;
     height: 100px;
+    color: silver;
 }
 
 a,
@@ -43,13 +44,13 @@ a:active {
 }
 
 #confirm {
-	background: #6499ef;
+	background: #silver;
 	border: 2px solid #6499ef;
     border-radius: 5px;
 	float: right;
 	padding-right: 3px;
 	padding-left: 2px;
-	color: white;
+	color: darkgreen;
 }
 
 #checkout-form {

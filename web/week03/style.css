@@ -5,10 +5,12 @@ body {
 
 #header ul {
     list-style-type: none;
+    position: relative;
+	top: 0;
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    background-color: silver;
+    overflow: auto;
+    background-color: white;
 }
 
 #header li {
@@ -17,19 +19,20 @@ body {
 
 #header li a {
     display: block;
-    color: black;
+    color: darkgreen;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    font-size: 20px;
 }
 
-/* Change the link color to #111 (black) on hover */
+
 #header li a:hover {
-    background-color: grey;
+    background-color: silver;
 }
 
 #current-page {
-    background: darkgrey;
+    background: silver;
 }
 
 #about-button:hover {
@@ -40,6 +43,10 @@ body {
 #body {
     padding: 20px;
 }
+#bodyCart {
+    padding: 20px;
+    background-color: silver;
+}
 
 #info {
     padding-left: 20px;
@@ -47,15 +54,19 @@ body {
 }
 
 html {
-    border: 5px solid #333;
+    border: 3px solid;
+    border-color: silver;
     position: relative;
     overflow: auto;
-    padding-bottom: 20px;
+    padding-bottom: 50px;
 }
 
 h1 {
-    text-shadow: 1px 1px red;
+    text-align: center;
+    font-size: 60px;
     padding-left: 20px;
+    color: black;
+    background-color: silver;
 }
 
 #fa-pic {

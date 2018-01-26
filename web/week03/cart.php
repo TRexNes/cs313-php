@@ -43,7 +43,7 @@ foreach ($_SESSION["in_cart"] as $item => $qty)
 	  </ul>
     </div>
 
-    <div id="body">
+    <div id="bodyCart">
       <?php
           if (count($cart) > 0)
           {

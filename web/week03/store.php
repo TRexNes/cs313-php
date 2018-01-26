@@ -27,33 +27,33 @@ if (isset($_GET["add"]))
 </head>
 <html>
 	<body>
-		<div id="header">
-			<h1>SHOP</h1>
-
-			<div id="cart">
-				<a id="cart-link" href="cart.php">
-					<i id="fa-cart" class="fa fa-shopping-cart fa-2x"></i>
-					(<span id="cart-amount">
-						<?php
-							if (isset($_SESSION["total"])) 
-							{
-								echo $_SESSION["total"];
-							}
-							else
-							{
-								echo "0";
-							}
-						?>
+		
+			<h1>Rex Nesbit's Shop</h1>
+<div id="header">
+	
+	<ul>
+		<li><a href="../homePage313.html">Home</a></li>
+		<li><a href="../index.html">Assignments</a></li>
+		<li><a id="current-page" href="">Current Week03 - Store</a></li>
+	</ul>
+</div>
+<div id="cart">
+		<a id="cart-link" href="cart.php">
+		<i id="fa-cart" class="fa fa-shopping-cart fa-2x"></i>
+		(<span id="cart-amount">
+			<?php
+			if (isset($_SESSION["total"])) 
+				{
+				echo $_SESSION["total"];
+				}
+				else
+				{
+				echo "0";
+				}
+			?>
 					</span>)
 				</a>
 			</div>
-
-			<ul>
-			  <li><a href="../homePage313.html">Home</a></li>
-			  <li><a href="../index.html">Assignments</a></li>
-			  <li><a id="current-page" href="">Current Week03 - Store</a></li>
-			</ul>
-		</div>
 
 		<div id="body">
 		<?php

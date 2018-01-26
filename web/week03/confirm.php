@@ -23,7 +23,7 @@ $_SESSION["user"]["country"] = $_POST["country"];
       <h1>Confirm</h1>
     </div>
 
-    <div id="body">
+    <div id="bodyCart">
       <?php
         echo "<table>";
         echo "<thead>";

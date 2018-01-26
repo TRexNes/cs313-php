@@ -14,8 +14,8 @@ $_SESSION["user"]["country"] = $_POST["country"];
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://use.fontawesome.com/22207e5600.js"></script>
-  <link rel="stylesheet" type="text/css" href="../css/style.css">
-  <link rel="stylesheet" type="text/css" href="../css/store.css">
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <link rel="stylesheet" type="text/css" href="/store.css">
 </head>
 <html>
   <body>

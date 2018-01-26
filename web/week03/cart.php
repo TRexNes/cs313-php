@@ -1,6 +1,6 @@
 <?php
 session_start();
-$products = array("benchmade" => 19.99, "buck" => 10.99, "spyderco" => 2.99);
+$products = array("Drag1" => 19.99, "Drag2" => 10.99, "Drag3" => 12.99);
 if($_GET["remove"])
 {
   if (isset($_SESSION["in_cart"][$_GET["remove"]]))

@@ -58,7 +58,7 @@ $_SESSION["user"]["country"] = $_POST["country"];
         echo $_SESSION["user"]["country"]."<br>";
         ?>
 
-        <a id='confirm' href='store.php?new=true'>confirm</a>
+        <a id='confirm' href='store.php?new=true'>Confirm</a>
     </div>
   </body>
 </html>

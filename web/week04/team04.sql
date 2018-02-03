@@ -1,4 +1,4 @@
-# First Create the database
+
 CREATE DATABASE conference;
 
 

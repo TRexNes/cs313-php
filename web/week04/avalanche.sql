@@ -1,3 +1,5 @@
+ DROP TABLE IF EXISTS players CASCADE;
+
 CREATE TABLE public.players(
 	  playerid SERIAL NOT NULL PRIMARY KEY,
 	  firstname varchar(20),

@@ -1,8 +1,3 @@
-# Create a database and connect to it
-CREATE DATABASE scripture_ta;
-\c scripture_ta
-
-# Create a table for the scriptures
 CREATE TABLE scripture (
   id SERIAL PRIMARY KEY NOT NULL,
   book VARCHAR(80) NOT NULL,
@@ -11,7 +6,7 @@ CREATE TABLE scripture (
   content VARCHAR(4000) NOT NULL
   );
 
-# Insert data into the new table
+
 INSERT INTO scripture (book, chapter, verse, content)
   VALUES ('John', 1, 5, 'And the light shineth in darkness; and the darkness comprehended it not.');
 
@@ -24,7 +19,3 @@ INSERT INTO scripture (book, chapter, verse, content)
 INSERT INTO scripture (book, chapter, verse, content)
   VALUES ('Mosiah', 16, 9, 'He is the light and the life of the world; yea, a light that is endless, that can never be darkened; yea, and also a life which is endless, that there can be no more death.');
 
-
-# Create a user that can access this table
-CREATE USER ta_user WITH PASSWORD 'ta_pass';
-GRANT SELECT, INSERT, UPDATE ON scripture TO ta_user;

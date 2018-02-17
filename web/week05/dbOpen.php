@@ -1,3 +1,5 @@
+<html>
+<body>
 <?php
           // default Heroku Postgres configuration URL
         $dbUrl = getenv('DATABASE_URL');
@@ -27,3 +29,5 @@
               
             }*/
 ?>
+</body>
+</html>

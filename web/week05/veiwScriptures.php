@@ -13,7 +13,7 @@
      <?php
       
      
-            $script_id = $_GET['id'];   
+            //$script_id = $_GET['id'];   
             
             //echo '<p>Your input id is :    ' . $script_id . '</p> <br />';
       
@@ -22,18 +22,19 @@
             include("dbOpen.php");
             //********************************************************
             
-          echo '<table id="scripture">';
-               foreach ($db->query("
-                  SELECT scripture_id, book, chapter, verse, content 
-                  FROM public.scriptures  
-                  WHERE scripture_id = '$script_id' ") as $row)
-                  {
-                    echo '<tr id="sql_data">';
-                      echo '<td><b>' .$row[book].' '. $row[chapter].':' .$row[verse]. '</b> - ' .$row[content].' </td>';
-                     echo '</tr>';   /**/
-                  }
-            
-            echo '</table>';
+          $statement = $db->prepare("SELECT book, chapter, verse, content FROM scripture");
+$statement->execute();
+// Go through each result
+while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+{
+	// The variable "row" now holds the complete record for that
+	// row, and we can access the different values based on their
+	// name
+	echo '<p>';
+	echo '<strong>' . $row['book'] . ' ' . $row['chapter'] . ':';
+	echo $row['verse'] . '</strong>' . ' - ' . $row['content'];
+	echo '</p>';
+}
  
      
      

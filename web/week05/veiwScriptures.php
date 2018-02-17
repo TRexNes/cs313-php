@@ -13,31 +13,33 @@
      <?php
       
      
-            //$script_id = $_GET['id'];   
-            
-            //echo '<p>Your input id is :    ' . $script_id . '</p> <br />';
+         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        
+                        $var = $_POST["search1"];
       
             
             //********************************************************
             include("dbOpen.php");
             //********************************************************
             
-          $statement = $db->prepare("SELECT book, chapter, verse, content FROM scripture");
-$statement->execute();
-// Go through each result
-while ($row = $statement->fetch(PDO::FETCH_ASSOC))
-{
-	// The variable "row" now holds the complete record for that
-	// row, and we can access the different values based on their
-	// name
-	echo '<p>';
-	echo '<strong>' . $row['book'] . ' ' . $row['chapter'] . ':';
-	echo $row['verse'] . '</strong>' . ' - ' . $row['content'];
-	echo '</p>';
-}
+  echo '<table id="scripture">';
+               foreach ($db->query("
+                  SELECT scripture_id, book, chapter, verse, content 
+                  FROM public.scriptures  
+                  WHERE book LIKE '%$var%' ") as $row)
+                  {
+                    echo '<tr id="sql_data">';
+                     echo '<td> <a href="week05ta_4.php?id='.$row[scripture_id].'"><b>' .$row[book].' '. $row[chapter].':' .$row[verse]. '</b></a> </td>';
+                     echo '</tr>';   /**/
+                  }
+            
+            echo '</table>';
  
      
-     
+      
+       } else {
+                           echo "This is embarrassing - - - There was an error in the REQUEST_METHOD not being POSTed. . . ";
+                        }
            include("dbClose.php");
       
       ?>

@@ -6,26 +6,8 @@
 * Description: This file shows an example of how to query a
 *   PostgreSQL database from PHP.
 ***********************************************************/
-// It would be better to store these in a different file
-$dbUser = 'postgres';
-$dbPassword = 'avsnut';
-$dbName = 'postgres';
-$dbHost = 'localhost';
-$dbPort = '5432';
-try
-{
-	// Create the PDO connection
-	$db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
-	// this line makes PDO give us an exception when there are problems, and can be very helpful in debugging!
-	$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-}
-catch (PDOException $ex)
-{
-	// If this were in production, you would not want to echo
-	// the details of the exception.
-	echo "Error connecting to DB. Details: $ex";
-	die();
-}
+require "dbConnect.php";
+$db = get_db();
 ?>
 <!DOCTYPE html>
 <html>

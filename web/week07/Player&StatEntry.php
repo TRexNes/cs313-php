@@ -38,11 +38,11 @@ $db = get_db();
 	<br /><br />
 
 	<input type="text" id="txtBirth_country" name="txtBirth_country"></input>
-	<label for="txtBirth_country">Birth_country</label>
+	<label for="txtBirth_country">Birth country</label>
 	<br /><br />
 
 	<input type="text" id="txtBirth_year" name="txtBirth_year"></input>
-	<label for="txtBirth_year">Birth_year</label>
+	<label for="txtBirth_year">Birth year</label>
 	<br /><br />
 
 	<label for="txtContent">Content:</label><br />
@@ -71,7 +71,7 @@ try
 		$id = $row['player_id'];
 		$last_name = $row['last_name'];
 		// Notice that we want the value of the checkbox to be the id of the label
-		echo "<input type='checkbox' name='chkPlayers[]' id='chkPlayers$id' value='$player_id'>";
+		echo "<input type='checkbox' name='chkPlayers[]' id='chkPlayers$id' value='$id'>";
 		// Also, so they can click on the label, and have it select the checkbox,
 		// we need to use a label tag, and have it point to the id of the input element.
 		// The trick here is that we need a unique id for each one. In this case,

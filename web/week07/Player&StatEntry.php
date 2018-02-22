@@ -87,7 +87,7 @@ try
 	// prepare the statement
 	
 	$stmtPlayers = $db->prepare('SELECT first_name, last_name, position, birth_year, birth_country FROM players');
-	$stmtPLayers->execute();
+	$stmtPlayers->execute();
 	// Go through each result
 	while ($playerRow = $stmtPlayers->fetch(PDO::FETCH_ASSOC))
 	{

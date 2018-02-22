@@ -94,8 +94,8 @@ try
 		echo '<p>';
 		echo 'Player Name: '. $row['last_name'];
 		echo '<br />';
-		echo 'Games Played: '. $row['games_played'] . ' ' . ' Goals: ' . $row['goals'] . ' ' . ' Assists: ';
-		echo $row['assists'] . ' ' . ' Points: ' . $row['points'] . ' ' . ' Penalty Mins: ';
+		echo 'Games Played: '. $row['games_played'] . ' Goals: ' . $row['goals'] . ' Assists: ';
+		echo $row['assists'] . ' Points: ' . $row['points'] . ' Penalty Mins: ';
 		echo $row['penalty_mins'] . '</strong>';
 		echo '<br />';
 		echo '</p>';

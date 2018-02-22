@@ -25,28 +25,24 @@ $db = get_db();
 
 <form id="mainForm" action="insertTopic.php" method="POST">
 
-	<input type="text" id="txtFirst_name" name="txtFirst_name"></input>
-	<label for="txtFirst_name">First Name</label>
+	<input type="number" id="intGames_played" name="intGames_played"></input>
+	<label for="intGames_played">Games played</label>
 	<br /><br />
 	
-	<input type="text" id="txtLast_name" name="txtLast_name"></input>
-	<label for="txtLast_name">Last Name</label>
+	<input type="number" id="intGoals" name="intGoals"></input>
+	<label for="intGoals">Goals</label>
 	<br /><br />
 	
-	<input type="text" id="txtPosition" name="txtPosition"></input>
-	<label for="txtPosition">Position</label>
+	<input type="number" id="intAssists" name="intAssists"></input>
+	<label for="intAssists">Assists</label>
 	<br /><br />
 
-	<input type="text" id="txtBirth_country" name="txtBirth_country"></input>
-	<label for="txtBirth_country">Birth country</label>
+	<input type="number" id="intPoints" name="intPoints"></input>
+	<label for="intPoints">Points</label>
 	<br /><br />
 
-	<input type="text" id="txtBirth_year" name="txtBirth_year"></input>
-	<label for="txtBirth_year">Birth year</label>
-	<br /><br />
-
-	<label for="txtContent">Content:</label><br />
-	<textarea id="txtContent" name="txtContent" rows="4" cols="50"></textarea>
+	<input type="number" id="intPenalty_mins" name="intPenalty_mins"></input>
+	<label for="intPenalty_mins">Penalty mins</label>
 	<br /><br />
 
 	<label>Players:</label><br />
@@ -69,7 +65,7 @@ try
 	while ($row = $statement->fetch(PDO::FETCH_ASSOC))
 	{
 		$id = $row['player_id'];
-		$last_name = $row['last_name'];
+		$name = $row['last_name'];
 		// Notice that we want the value of the checkbox to be the id of the label
 		echo "<input type='checkbox' name='chkPlayers[]' id='chkPlayers$id' value='$id'>";
 		// Also, so they can click on the label, and have it select the checkbox,
@@ -77,7 +73,7 @@ try
 		// The trick here is that we need a unique id for each one. In this case,
 		// we use "chkTopics" followed by the id, so that it becomes something like
 		// "chkTopics1" and "chkTopics2", etc.
-		echo "<label for='chkPlayers$id'>$last_name</label><br />";
+		echo "<label for='chkPlayers$id'>$name</label><br />";
 		// put a newline out there just to make our "view source" experience better
 		echo "\n";
 	}

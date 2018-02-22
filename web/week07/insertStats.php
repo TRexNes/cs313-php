@@ -41,10 +41,13 @@ try
 	
 	// 
 	// We do this by preparing the query with placeholder values
-	$query = 'INSERT INTO stats(games_played, goals, assists, points, penalty_mins) VALUES(:games_played, :goals, :assits, :points, :penalty_mins)';
+	$playerId = $db->lastInsertId("player_id_seq");
+	
+	$query = 'INSERT INTO stats(id, games_played, goals, assists, points, penalty_mins) VALUES(:id, :games_played, :goals, :assits, :points, :penalty_mins)';
 	$statement = $db->prepare($query);
 	// Now we bind the values to the placeholders. This does some nice things
 	// including sanitizing the input with regard to sql commands.
+	$statement->bindValue(':id', $playerId);
 	$statement->bindValue(':games_played', $games_played);
 	$statement->bindValue(':goals', $goals);
 	$statement->bindValue(':assits', $assits);

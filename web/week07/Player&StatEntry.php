@@ -86,28 +86,13 @@ try
 	//	. ' INNER JOIN topic t ON st.topicId = t.id');
 	// prepare the statement
 	
-	$stmtPlayers = $db->prepare('SELECT first_name, last_name, position, birth_year, birth_country FROM players');
-	$stmtPlayers->execute();
-	// Go through each result
-	while ($playerRow = $stmtPlayers->fetch(PDO::FETCH_ASSOC))
-	{
-		echo '<p>';
-		echo 'Name: '. $playerRow['first_name'] . ' ' .$playerRow['last_name'] . ',   ' . ' Position: ';
-		echo $playerRow['position'] . ',   ' . ' Birth Year: ' . $playerRow['birth_year'] . ',   ' . ' Birth Country: ';
-		echo $playerRow['birth_country'] . '</strong>';
-		echo '<br />';
-		echo '</p>';
-	}
-	echo 'Player:';
-	
-	
-	
-	$statement = $db->prepare('SELECT id, games_played, goals, assists, points, penalty_mins FROM stats');
+	$statement = $db->prepare('SELECT players.last_name, stats.games_played, stats.goals, stats.assists, stats.points, stats.penalty_mins FROM stats JOIN players ON players.player_id=stats.id;');
 	$statement->execute();
 	// Go through each result
 	while ($row = $statement->fetch(PDO::FETCH_ASSOC))
 	{
 		echo '<p>';
+		echo 'Name: '. $row['last_name'];
 		echo 'Games Played: '. $row['games_played'] . ' Goals: ' . $row['goals'] . ' Assists: ';
 		echo $row['assists'] . ' Points: ' . $row['points'] . ' Penalty Mins: ';
 		echo $row['penalty_mins'] . '</strong>';

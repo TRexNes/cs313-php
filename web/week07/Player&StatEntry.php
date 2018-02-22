@@ -66,6 +66,9 @@ $db = get_db();
 	<label for="intPenalty_mins">Penalty mins</label>
 	<br /><br />
 
+	<input type="submit" value="Add to Database" />
+
+
 	<label>Current Players:</label><br />
 
 <?php
@@ -112,7 +115,6 @@ catch (PDOException $ex)
 
 	<br />
 
-	<input type="submit" value="Add to Database" />
 
 </form>
 

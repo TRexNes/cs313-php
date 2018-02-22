@@ -92,7 +92,7 @@ try
 	while ($playerRow = $stmtPlayers->fetch(PDO::FETCH_ASSOC))
 	{
 		echo '<p>';
-		echo 'Name: '. $playerRow['first_name'] . . $playerRow['last_name'] . ' Position: ';
+		echo 'Name: '. $playerRow['first_name'] . $playerRow['last_name'] . ' Position: ';
 		echo $playerRow['position'] . ' Birth Year ' . $playerRow['birth_year'] . ' Birth Country: ';
 		echo $playerRow['birth_country'] . '</strong>';
 		echo '<br />';

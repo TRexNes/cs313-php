@@ -37,9 +37,9 @@ try
 	while ($row = $statement->fetch(PDO::FETCH_ASSOC))
 	{
 		echo '<p>';
-		echo '<strong>' . $row['games_played'] . ' ' . $row['goals'] . ':';
-		echo $row['assists'] . '</strong>' . ' - ' . $row['points'];
-		echo $row['penalty_mins'] . '</strong>';
+		echo $row['games_played'] . ' ' . $row['goals'] . ' ';
+		echo $row['assists'] . ' ' . $row['points'] . ' ';
+		echo $row['penalty_mins'].;
 		echo '<br />';
 		echo 'Players: ';
 		// get the topics now for this scripture

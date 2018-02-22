@@ -213,7 +213,8 @@ INSERT INTO stats (id, games_played, goals, assists, points, penalty_mins)
 
 
 
-SELECT *
+SELECT players.last_name, stats.games_played, stats.goals, stats.assists, stats.points, stats.penalty_mins
 FROM stats
-JOIN players ON players.player_id=stats.id
-WHERE players.player_id = '1';
+JOIN players ON players.player_id=stats.id;
+
+

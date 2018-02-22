@@ -1,16 +1,14 @@
 <?php
 /**********************************************************
-* File: topicEntry.php
-* Author: Br. Burton
-* 
-* Description: This is the PHP file that the user starts with.
-*   It has a form to enter a new scripture and topic.
-*   It posts to the insertTopic.php page.
+* This file is the starting page, it allows entering of data for the DB
 ***********************************************************/
+
 // The DB connection logic is in another file so it can be included
 // in each of our different PHP files.
+
 require("dbConnect.php");
 $db = get_db();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,6 +22,8 @@ $db = get_db();
 <h1>Enter Player information and their stats</h1>
 
 <form id="mainForm" action="insertStats.php" method="POST">
+
+<div id="enter">
 
 	<input type="text" id="txtFirst_name" name="txtFirst_name"></input>
 	<label for="txtFirst_name">First Name</label>
@@ -69,27 +69,15 @@ $db = get_db();
 	<input type="submit" value="Add to Database" />
 	<br />
 	<br />
-
+</div>
 
 	<label>Current Players:</label><br />
 
 <?php
-// This section will now generate the available check boxes for topics
-// based on what is in the database
-// As before, it would be better to break this out into a separate function
-// in a separate file, that handled the DB interaction, and returned
-// a list of topics. But to keep things as clear as possible we can
-// also query and loop through the results, right here.
+
 try
 {
-	// For this example, we are going to make a call to the DB to get the scriptures
-	// and then for each one, make a separate call to get its topics.
-	// This could be done with a single query (and then more processing of the resultset
-	// afterward) as follows:
-	//	$statement = $db->prepare('SELECT book, chapter, verse, content, t.name FROM scripture s'
-	//	. ' INNER JOIN scripture_topic st ON s.id = st.scriptureId'
-	//	. ' INNER JOIN topic t ON st.topicId = t.id');
-	// prepare the statement
+	
 	
 	$statement = $db->prepare('SELECT players.last_name, stats.games_played, stats.goals, stats.assists, stats.points, stats.penalty_mins FROM stats JOIN players ON players.player_id=stats.id;');
 	$statement->execute();
@@ -108,8 +96,7 @@ try
 }
 catch (PDOException $ex)
 {
-	// Please be aware that you don't want to output the Exception message in
-	// a production environment
+	
 	echo "Error connecting to DB. Details: $ex";
 	die();
 }

@@ -1,34 +1,45 @@
 <?php
-/**********************************************************
-* File: insertTopic.php
-* Author: Br. Burton
-* 
-* Description: Takes input posted from topicEntry.php
-*   This file enters a new scripture into the database
-*   along with its associated topics.
-*
-*   This file does NOT do any rendering at all,
-*   instead it redirects the user to showTopics.php to see
-*   the resulting list.
-***********************************************************/
+/*************
+* This file inserts into the databse preparing to show data
+***************/
+
+
 // get the data from the POST
+$first_name = $_POST['txtFirst_name'];
+$last_name = $_POST['txtLast_name'];
+$position = $_POST['txtPosition'];
+$birth_year = $_POST['txtBirth_year'];
+$birth_country = $_POST['txtBirth_country'];
 $games_played = $_POST['intGames_played'];
 $goals = $_POST['intGoals'];
 $assits = $_POST['intAssists'];
 $points = $_POST['intPoints'];
-$playerIds = $_POST['chkPlayers'];
-// For debugging purposes, you might include some echo statements like this
-// and then not automatically redirect until you have everything working.
-// echo "book=$book\n";
-// echo "chapter=$chapter\n";
-// echo "verse=$verse\n";
-// echo "content=$content\n";
-// we could (and should!) put additional checks here to verify that all this data is actually provided
+
+// 
+// 
+// echo "first_name=$first_name\n";
+// 
+// 
+// 
+// 
 require("dbConnect.php");
 $db = get_db();
 try
 {
-	// Add the Scripture
+	
+	
+	$query = 'INSERT INTO players(first_name, last_name, position, birth_year, birth_country) VALUES(:first_name, :last_name, :position, :birth_year, :birth_country)';
+	$statement = $db->prepare($query);
+	// Now we bind the values to the placeholders. This does some nice things
+	// including sanitizing the input with regard to sql commands.
+	$statement->bindValue(':first_name', $first_name);
+	$statement->bindValue(':last_name', $last_name);
+	$statement->bindValue(':position', $position);
+	$statement->bindValue(':birth_year', $birth_year);
+	$statement->bindValue(':birth_country', $birth_country);
+	$statement->execute();
+	
+	// 
 	// We do this by preparing the query with placeholder values
 	$query = 'INSERT INTO stats(games_played, goals, assists, points, penalty_mins) VALUES(:games_played, :goals, :assits, :points, :penalty_mins)';
 	$statement = $db->prepare($query);
@@ -40,31 +51,20 @@ try
 	$statement->bindValue(':points', $points);
 	$statement->bindValue(':penalty_mins', $penalty_mins);
 	$statement->execute();
-	// get the new id ---was scripture
-	$playerId = $db->lastInsertId("player_id_seq");
-	// Now go through each topic id in the list from the user's checkboxes
-	foreach ($playerIds as $playerId)
-	{
-		echo "PlayerId: $playerId, playerId: $playerId";
-		// Again, first prepare the statement
-		$statement = $db->prepare('INSERT INTO stats(games_played, goals, assists, points, penalty_mins) VALUES(:games_played, :goals, :assits, :points, :penalty_mins)');
-		// Then, bind the values
-		$statement->bindValue(':scriptureId', $scriptureId);
-		$statement->bindValue(':topicId', $topicId);
-		$statement->execute();
-	}
+	
 }
 catch (Exception $ex)
 {
-	// Please be aware that you don't want to output the Exception message in
-	// a production environment
+	// 
+	// 
 	echo "Error with DB. Details: $ex";
 	die();
 }
-// finally, redirect them to a new page to actually show the topics
+// redirect 
 header("Location: showStats.php");
-die(); // we always include a die after redirects. In this case, there would be no
-       // harm if the user got the rest of the page, because there is nothing else
-       // but in general, there could be things after here that we don't want them
-       // to see.
+die(); 
+// 
+// 
+// 
+// 
 ?>

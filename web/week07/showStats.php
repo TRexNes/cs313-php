@@ -1,10 +1,6 @@
 <?php
 /**********************************************************
-* File: showTopics.php
-* Author: Br. Burton
-* 
-* Description: This file retrieves the scriptures and topics
-* from the DB.
+* This file shows th data in the updated database
 ***********************************************************/
 require("dbConnect.php");
 $db = get_db();
@@ -23,36 +19,20 @@ $db = get_db();
 <?php
 try
 {
-	// For this example, we are going to make a call to the DB to get the scriptures
-	// and then for each one, make a separate call to get its topics.
-	// This could be done with a single query (and then more processing of the resultset
-	// afterward) as follows:
-	//	$statement = $db->prepare('SELECT book, chapter, verse, content, t.name FROM scripture s'
-	//	. ' INNER JOIN scripture_topic st ON s.id = st.scriptureId'
-	//	. ' INNER JOIN topic t ON st.topicId = t.id');
-	// prepare the statement
-	$statement = $db->prepare('SELECT id, games_played, goals, assists, points, penalty_mins FROM stats');
+	
+	
+	$statement = $db->prepare('SELECT players.last_name, stats.games_played, stats.goals, stats.assists, stats.points, stats.penalty_mins FROM stats JOIN players ON players.player_id=stats.id;');
 	$statement->execute();
 	// Go through each result
 	while ($row = $statement->fetch(PDO::FETCH_ASSOC))
 	{
 		echo '<p>';
+		echo 'Player Name: '. $row['last_name'];
+		echo '<br />';
 		echo 'Games Played: '. $row['games_played'] . ' Goals: ' . $row['goals'] . ' Assists: ';
 		echo $row['assists'] . ' Points: ' . $row['points'] . ' Penalty Mins: ';
 		echo $row['penalty_mins'] . '</strong>';
 		echo '<br />';
-		echo 'Player: ';
-		// get the topics now for this scripture
-		$stmtPlayers = $db->prepare('SELECT last_name FROM players p'
-			. ' JOIN stats st ON st.id = p.player_id'
-			. ' WHERE st.id = player_id');
-		$stmtPlayers->bindValue(':player_Id', $row['id']);
-		$stmtPlayers->execute();
-		// Go through each topic in the result
-		while ($playerRow = $stmtPlayers->fetch(PDO::FETCH_ASSOC))
-		{
-			echo $playerRow['last_name'] . ' ';
-		}
 		echo '</p>';
 	}
 }

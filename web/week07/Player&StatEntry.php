@@ -66,7 +66,7 @@ $db = get_db();
 	<label for="intPenalty_mins">Penalty mins</label>
 	<br /><br />
 
-	<label>Players:</label><br />
+	<label>Current Players:</label><br />
 
 <?php
 // This section will now generate the available check boxes for topics
@@ -85,13 +85,29 @@ try
 	//	. ' INNER JOIN scripture_topic st ON s.id = st.scriptureId'
 	//	. ' INNER JOIN topic t ON st.topicId = t.id');
 	// prepare the statement
+	
+	$stmtPlayers = $db->prepare('SELECT first_name, last_name, position, birth_year, birth_country FROM players');
+	$stmtPLayers->execute();
+	// Go through each result
+	while ($playerRow = $stmtPlayers->fetch(PDO::FETCH_ASSOC))
+	{
+		echo '<p>';
+		echo 'First Name: '. $playerRow['first_name'] . ' Last Name: ' . $playerRow['last_name'] . ' Position: ';
+		echo $playerRow['position'] . ' Birth Year ' . $playerRow['birth_year'] . ' Birth Country: ';
+		echo $playerRow['birth_country'] . '</strong>';
+		echo '<br />';
+		echo '</p>';
+	}
+	echo 'Player:';
+	
+	
+	
 	$statement = $db->prepare('SELECT id, games_played, goals, assists, points, penalty_mins FROM stats');
 	$statement->execute();
 	// Go through each result
 	while ($row = $statement->fetch(PDO::FETCH_ASSOC))
 	{
 		echo '<p>';
-		echo 'Player:';
 		echo 'Games Played: '. $row['games_played'] . ' Goals: ' . $row['goals'] . ' Assists: ';
 		echo $row['assists'] . ' Points: ' . $row['points'] . ' Penalty Mins: ';
 		echo $row['penalty_mins'] . '</strong>';

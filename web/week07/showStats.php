@@ -41,9 +41,9 @@ try
 		echo $row['assists'] . ' ' . $row['points'] . ' ';
 		echo $row['penalty_mins'] . '</strong>';
 		echo '<br />';
-		echo 'Players: ';
+		echo 'Player: ';
 		// get the topics now for this scripture
-		$stmtPlayers = $db->prepare('SELECT first_name, last_name FROM palyers p'
+		$stmtPlayers = $db->prepare('SELECT first_name, last_name FROM players p'
 			. ' INNER JOIN stats st ON st.id = p.player_id'
 			. ' WHERE st.id = :playerid');
 		$stmtTopics->bindValue(':playerId', $row['id']);

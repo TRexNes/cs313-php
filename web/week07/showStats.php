@@ -39,7 +39,7 @@ try
 		echo '<p>';
 		echo $row['games_played'] . ' ' . $row['goals'] . ' ';
 		echo $row['assists'] . ' ' . $row['points'] . ' ';
-		echo $row['penalty_mins'].;
+		echo $row['penalty_mins'] . '</strong>';
 		echo '<br />';
 		echo 'Players: ';
 		// get the topics now for this scripture

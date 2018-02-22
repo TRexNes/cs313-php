@@ -21,9 +21,30 @@ $db = get_db();
 <body>
 <div>
 
-<h1>Enter New Players and Stats</h1>
+<h1>Select a player below and enter their updated stats</h1>
 
-<form id="mainForm" action="insertTopic.php" method="POST">
+<form id="mainForm" action="insertStats.php" method="POST">
+
+	<input type="text" id="txtFirst_name" name="txtFirst_name"></input>
+	<label for="txtFirst_name">First Name</label>
+	<br /><br />
+
+	<input type="text" id="txtLast_name" name="txtLast_name"></input>
+	<label for="txtLast_name">Last Name</label>
+	<br /><br />
+
+	<input type="text" id="txtPosition" name="txtPosition"></input>
+	<label for="txtPosition">Position</label>
+	<br /><br />
+
+	<input type="text" id="txtBirth_year" name="txtBirth_year"></input>
+	<label for="txtBirth_year">Birth Year</label>
+	<br /><br />
+	
+	<input type="text" id="txtBirth_country" name="txtBirth_country"></input>
+	<label for="txtBirth_country">Birth Country</label>
+	<br /><br />
+
 
 	<input type="number" id="intGames_played" name="intGames_played"></input>
 	<label for="intGames_played">Games played</label>
@@ -56,26 +77,26 @@ $db = get_db();
 // also query and loop through the results, right here.
 try
 {
-	// Notice that we do not use "SELECT *" here. It is best practice
-	// to only bring back the fields that you need.
+	// For this example, we are going to make a call to the DB to get the scriptures
+	// and then for each one, make a separate call to get its topics.
+	// This could be done with a single query (and then more processing of the resultset
+	// afterward) as follows:
+	//	$statement = $db->prepare('SELECT book, chapter, verse, content, t.name FROM scripture s'
+	//	. ' INNER JOIN scripture_topic st ON s.id = st.scriptureId'
+	//	. ' INNER JOIN topic t ON st.topicId = t.id');
 	// prepare the statement
-	$statement = $db->prepare('SELECT player_id, last_name FROM players');
+	$statement = $db->prepare('SELECT id, games_played, goals, assists, points, penalty_mins FROM stats');
 	$statement->execute();
 	// Go through each result
 	while ($row = $statement->fetch(PDO::FETCH_ASSOC))
 	{
-		$id = $row['player_id'];
-		$name = $row['last_name'];
-		// Notice that we want the value of the checkbox to be the id of the label
-		echo "<input type='checkbox' name='chkPlayers[]' id='chkPlayers$id' value='$id'>";
-		// Also, so they can click on the label, and have it select the checkbox,
-		// we need to use a label tag, and have it point to the id of the input element.
-		// The trick here is that we need a unique id for each one. In this case,
-		// we use "chkTopics" followed by the id, so that it becomes something like
-		// "chkTopics1" and "chkTopics2", etc.
-		echo "<label for='chkPlayers$id'>$name</label><br />";
-		// put a newline out there just to make our "view source" experience better
-		echo "\n";
+		echo '<p>';
+		echo 'Player:'
+		echo 'Games Played: '. $row['games_played'] . ' Goals: ' . $row['goals'] . ' Assists: ';
+		echo $row['assists'] . ' Points: ' . $row['points'] . ' Penalty Mins: ';
+		echo $row['penalty_mins'] . '</strong>';
+		echo '<br />';
+		echo '</p>';
 	}
 }
 catch (PDOException $ex)

@@ -37,15 +37,15 @@ try
 	while ($row = $statement->fetch(PDO::FETCH_ASSOC))
 	{
 		echo '<p>';
-		echo $row['games_played'] . ' ' . $row['goals'] . ' ';
-		echo $row['assists'] . ' ' . $row['points'] . ' ';
+		echo . ' Games Played: ' .$row['games_played'] . ' Goals: ' . $row['goals'] . ' Assists: ';
+		echo $row['assists'] . ' Points: ' . $row['points'] . ' Penalty Mins: ';
 		echo $row['penalty_mins'] . '</strong>';
 		echo '<br />';
 		echo 'Player: ';
 		// get the topics now for this scripture
-		$stmtPlayers = $db->prepare('SELECT first_name, last_name FROM players p'
+		$stmtPlayers = $db->prepare('SELECT last_name FROM players p'
 			. ' JOIN stats st ON st.id = p.player_id'
-			. ' WHERE st.id = :player_id');
+			. ' WHERE st.id = player_id');
 		$stmtPlayers->bindValue(':player_Id', $row['id']);
 		$stmtPlayers->execute();
 		// Go through each topic in the result

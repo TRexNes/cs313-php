@@ -31,7 +31,7 @@ try
 	//	. ' INNER JOIN scripture_topic st ON s.id = st.scriptureId'
 	//	. ' INNER JOIN topic t ON st.topicId = t.id');
 	// prepare the statement
-	$statement = $db->prepare('SELECT id, games_played, goals, assists, points, penalty_mins  FROM stats');
+	$statement = $db->prepare('SELECT id, games_played, goals, assists, points, penalty_mins FROM stats');
 	$statement->execute();
 	// Go through each result
 	while ($row = $statement->fetch(PDO::FETCH_ASSOC))
@@ -44,14 +44,14 @@ try
 		echo 'Player: ';
 		// get the topics now for this scripture
 		$stmtPlayers = $db->prepare('SELECT first_name, last_name FROM players p'
-			. ' INNER JOIN stats st ON st.id = p.player_id'
-			. ' WHERE st.id = :playerid');
-		$stmtTopics->bindValue(':playerId', $row['id']);
-		$stmtTopics->execute();
+			. ' JOIN stats st ON st.id = p.player_id'
+			. ' WHERE st.id = :player_id');
+		$stmtPlayers->bindValue(':player_Id', $row['id']);
+		$stmtPlayers->execute();
 		// Go through each topic in the result
-		while ($topicRow = $stmtTopics->fetch(PDO::FETCH_ASSOC))
+		while ($playerRow = $stmtPlayers->fetch(PDO::FETCH_ASSOC))
 		{
-			echo $topicRow['name'] . ' ';
+			echo $playerRow['last_name'] . ' ';
 		}
 		echo '</p>';
 	}

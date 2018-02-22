@@ -67,6 +67,8 @@ $db = get_db();
 	<br /><br />
 
 	<input type="submit" value="Add to Database" />
+	<br />
+	<br />
 
 
 	<label>Current Players:</label><br />

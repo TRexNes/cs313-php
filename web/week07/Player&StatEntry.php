@@ -21,7 +21,7 @@ $db = get_db();
 <body>
 <div>
 
-<h1>Select a player below and enter their updated stats</h1>
+<h1>Enter Player information and their stats</h1>
 
 <form id="mainForm" action="insertStats.php" method="POST">
 
@@ -68,7 +68,45 @@ $db = get_db();
 
 	<label>Players:</label><br />
 
-
+<?php
+// This section will now generate the available check boxes for topics
+// based on what is in the database
+// As before, it would be better to break this out into a separate function
+// in a separate file, that handled the DB interaction, and returned
+// a list of topics. But to keep things as clear as possible we can
+// also query and loop through the results, right here.
+try
+{
+	// For this example, we are going to make a call to the DB to get the scriptures
+	// and then for each one, make a separate call to get its topics.
+	// This could be done with a single query (and then more processing of the resultset
+	// afterward) as follows:
+	//	$statement = $db->prepare('SELECT book, chapter, verse, content, t.name FROM scripture s'
+	//	. ' INNER JOIN scripture_topic st ON s.id = st.scriptureId'
+	//	. ' INNER JOIN topic t ON st.topicId = t.id');
+	// prepare the statement
+	$statement = $db->prepare('SELECT id, games_played, goals, assists, points, penalty_mins FROM stats');
+	$statement->execute();
+	// Go through each result
+	while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+	{
+		echo '<p>';
+		echo 'Player:';
+		echo 'Games Played: '. $row['games_played'] . ' Goals: ' . $row['goals'] . ' Assists: ';
+		echo $row['assists'] . ' Points: ' . $row['points'] . ' Penalty Mins: ';
+		echo $row['penalty_mins'] . '</strong>';
+		echo '<br />';
+		echo '</p>';
+	}
+}
+catch (PDOException $ex)
+{
+	// Please be aware that you don't want to output the Exception message in
+	// a production environment
+	echo "Error connecting to DB. Details: $ex";
+	die();
+}
+?>
 
 	<br />
 

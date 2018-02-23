@@ -43,7 +43,7 @@ try
 	// 
 	// We do this by preparing the query with placeholder values
 	
-	//$scriptureId = $db->lastInsertId("player_id_seq");
+	//$playerId = $db->lastInsertId("player_id_seq");
 	$query = 'INSERT INTO stats(games_played, goals, assists, points, penalty_mins) VALUES(:games_played, :goals, :assits, :points, :penalty_mins)';
 	$statement = $db->prepare($query);
 	// Now we bind the values to the placeholders. This does some nice things

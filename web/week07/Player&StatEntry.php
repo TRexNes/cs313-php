@@ -79,7 +79,7 @@ try
 {
 	
 	
-	$statement = $db->prepare('SELECT players.last_name, stats.games_played, stats.goals, stats.assists, stats.points, stats.penalty_mins FROM stats JOIN players ON players.player_id=stats.id;');
+	$statement = $db->prepare('SELECT players.last_name, stats.games_played, stats.goals, stats.assists, stats.points, stats.penalty_mins FROM stats JOIN players ON players.player_id=stats.id');
 	$statement->execute();
 	// Go through each result
 	while ($row = $statement->fetch(PDO::FETCH_ASSOC))

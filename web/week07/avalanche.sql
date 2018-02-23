@@ -217,4 +217,5 @@ SELECT players.last_name, stats.games_played, stats.goals, stats.assists, stats.
 FROM stats
 JOIN players ON players.player_id=stats.id;
 
-
+SELECT players.first_name, stats.games_played, stats.goals, stats.assists, stats.points, stats.penalty_mins 
+FROM stats JOIN players ON players.player_id=stats.id;

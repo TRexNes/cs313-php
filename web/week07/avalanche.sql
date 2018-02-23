@@ -12,12 +12,12 @@ CREATE TABLE players(
 DROP TABLE IF EXISTS stats CASCADE;
 
 CREATE TABLE stats(
-	  id INT REFERENCES players(player_id), 
+	  id SERIAL NOT NULL REFERENCES players(player_id), 
 	  games_played INT NOT NULL DEFAULT 0,
 	  goals INT NOT NULL DEFAULT 0,
 	  assists INT NOT NULL DEFAULT 0,
 	  points INT NOT NULL DEFAULT 0,
-	  penalty_mins INT DEFAULT 0
+	  penalty_mins INT NOT NULL DEFAULT 0
 	);
 
 DROP TABLE IF EXISTS goalies CASCADE;

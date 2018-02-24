@@ -1,0 +1,30 @@
+body {
+	background: darkgreen
+}
+
+#title {
+	background-color: silver;
+    text-align: center;
+    font-size: 40px;
+}
+
+#form {
+	background: white;
+    color: darkgreen;
+    padding: 20px;
+    text-align: left;
+    margin-right: 100px;
+    font-size: 25px
+}
+
+#php {
+	text-align:right;
+	background-color: black;
+	font: 17pt sans-serif;
+	color: white;
+    text-shadow: 1px 2px black;
+}
+
+
+
+

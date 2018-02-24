@@ -9,13 +9,16 @@ $db = get_db();
 <html>
 <head>
 	<title>Player and Stats List</title>
+	<link rel="stylesheet" type="text/css" href="playerStyle.css">
 </head>
 
 <body>
-<div>
 
+
+<div id="title">
 <h1>Player and Stats List</h1>
-
+</div>
+<div id="php">
 <?php
 try
 {

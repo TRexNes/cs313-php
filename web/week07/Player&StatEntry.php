@@ -13,17 +13,20 @@ $db = get_db();
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Topic Entry</title>
+	<title>Player Entry</title>
+	<link rel="stylesheet" type="text/css" href="playerStyle.css">
 </head>
 
 <body>
-<div>
 
+<div id="title">
 <h1>Enter Player information and their stats</h1>
+</div>
+
 
 <form id="mainForm" action="insertStats.php" method="POST">
 
-<div id="enter">
+<div id="form">
 
 	<input type="text" id="txtFirst_name" name="txtFirst_name"></input>
 	<label for="txtFirst_name">First Name</label>
@@ -71,6 +74,7 @@ $db = get_db();
 	<br />
 </div>
 
+<div id=php>
 	<label>Current Players:</label><br />
 
 <?php
@@ -107,8 +111,9 @@ catch (PDOException $ex)
 
 </form>
 
-
 </div>
+
+
 
 </body>
 </html>

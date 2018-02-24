@@ -20,7 +20,7 @@ $db = get_db();
 <body>
 
 <div id="title">
-<h1>Enter Player information and their stats</h1>
+<h1>Player and Stat Entry</h1>
 </div>
 
 
